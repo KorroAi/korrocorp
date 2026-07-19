@@ -525,10 +525,20 @@ export default function ResearchPage() {
                     Download MD
                   </button>
                   {paperPdf && (
-                    <a href={`${API}/api/output/${paperPdf.replace(/\\/g, "/").split("/").pop()}`} target="_blank" download
+                    <button onClick={async () => {
+                      const t = localStorage.getItem("korro_token");
+                      const res = await fetch(`${API}/api/output/${paperPdf.replace(/\\/g, "/").split("/").pop()}`, {
+                        headers: { Authorization: `Bearer ${t}` },
+                      });
+                      const blob = await res.blob();
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement("a");
+                      a.href = url; a.download = "paper.pdf"; a.click();
+                      URL.revokeObjectURL(url);
+                    }}
                       className="py-3 px-4 font-display font-semibold text-sm bg-[#FF6B35] text-white rounded-xl hover:bg-[#E85D2C] text-center transition">
                       Download PDF
-                    </a>
+                    </button>
                   )}
                   {bibContent && (
                     <button onClick={() => {
