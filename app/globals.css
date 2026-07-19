@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-accent: #FF6B35;
+  --color-accent-hover: #E85D2C;
+  --color-ink: #2D3436;
+  --color-body: #636E72;
+  --color-border: #E8E8E8;
+  --color-teal: #00B894;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --background: #FAFAFA;
+  --foreground: #2D3436;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  overflow-x: hidden;
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+img, video, iframe, pre, table {
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(255, 107, 53, 0.15);
+  color: #2D3436;
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+.grain-overlay::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse-dot { 0%, 80%, 100% { opacity: 0; } 40% { opacity: 1; } }
+.spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; margin-right: 6px; vertical-align: middle; }
+.spinner-dark { border-color: rgba(0,0,0,0.15); border-top-color: #2D3436; }
+.progress-bar { transition: width 0.5s ease-out; }

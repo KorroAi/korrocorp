@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  .bg-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; }
+  .bg-orb-1 { width: 400px; height: 400px; background: #FF6B35; top: -100px; right: -50px; }
+  .bg-orb-2 { width: 300px; height: 300px; background: #4ECDC4; bottom: -80px; left: -60px; }
+  .content { position: relative; z-index: 1; text-align: center; padding: 60px; }
+  .badge { display: inline-block; background: rgba(255,107,53,0.15); color: #FF6B35; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; padding: 8px 20px; border-radius: 50px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 32px; border: 1px solid rgba(255,107,53,0.25); }
+  h1 { color: white; font-size: 72px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 16px; }
+  h1 .accent { color: #FF6B35; }
+  p { color: rgba(255,255,255,0.6); font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 300; line-height: 1.5; margin-bottom: 32px; }
+  .url { color: rgba(255,255,255,0.35); font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 1px; }
+  .line { width: 80px; height: 2px; background: rgba(255,107,53,0.5); margin: 0 auto 24px; }
+</style>
+</head>
+<body>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="content">
+    <div class="badge">Korrocorp</div>
+    <div class="line"></div>
+    <h1><span class="accent">6 Products.</span><br>14 Days.</h1>
+    <p>How we shipped six open source products in two weeks<br>using autonomous AI agents</p>
+    <div class="url">korrocorp.com</div>
+  </div>
+</body>
+</html>
