@@ -220,7 +220,7 @@ export default function ResearchPage() {
       const res = await fetch(`${API}/api/verify/scored`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content, engines: selectedEngines, format }),
+        body: JSON.stringify({ content, engines: selectedEngines, format, language }),
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
       setResults(await res.json());
@@ -267,7 +267,7 @@ export default function ResearchPage() {
       const res = await fetch(`${API}/api/readiness`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: text, venue, bib: bibContent, format }),
+        body: JSON.stringify({ content: text, venue, bib: bibContent, format, language }),
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
       setReadinessResult(await res.json());
@@ -286,7 +286,7 @@ export default function ResearchPage() {
       const res = await fetch(`${API}/api/review`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: text, format }),
+        body: JSON.stringify({ content: text, format, language }),
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
       setReviewResult(await res.json());
@@ -311,6 +311,7 @@ export default function ResearchPage() {
           content: text,
           action_plan: actionPlan,
           format,
+          language,
         }),
       });
       if (!res.ok) {
@@ -329,7 +330,7 @@ export default function ResearchPage() {
           const vRes = await fetch(`${API}/api/verify/scored`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ content: improved, engines: ["hallucination", "fact", "claim", "consistency"], format }),
+            body: JSON.stringify({ content: improved, engines: ["hallucination", "fact", "claim", "consistency"], format, language }),
           });
           if (vRes.ok) {
             setImprovedResults(await vRes.json());
@@ -499,7 +500,7 @@ export default function ResearchPage() {
                       try {
                         const res = await fetch(`${API}/api/verify/scored`, {
                           method: "POST", headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({ content: paperContent, engines: ["hallucination", "fact", "claim", "consistency"], format }),
+                          body: JSON.stringify({ content: paperContent, engines: ["hallucination", "fact", "claim", "consistency"], format, language }),
                         });
                         if (!res.ok) throw new Error(`API error: ${res.status}`);
                         setResults(await res.json());
