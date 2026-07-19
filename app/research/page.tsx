@@ -219,7 +219,7 @@ export default function ResearchPage() {
     try {
       const res = await fetch(`${API}/api/verify/scored`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
         body: JSON.stringify({ content, engines: selectedEngines, format, language }),
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
@@ -247,7 +247,7 @@ export default function ResearchPage() {
       if (bibContent) formData.set("bib", bibContent);
       const res = await fetch(`${API}/api/citations`, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: `Bearer ${authToken}` },
         body: formData.toString(),
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
@@ -266,7 +266,7 @@ export default function ResearchPage() {
     try {
       const res = await fetch(`${API}/api/readiness`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
         body: JSON.stringify({ content: text, venue, bib: bibContent, format, language }),
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
@@ -285,7 +285,7 @@ export default function ResearchPage() {
     try {
       const res = await fetch(`${API}/api/review`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
         body: JSON.stringify({ content: text, format, language }),
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
@@ -306,7 +306,7 @@ export default function ResearchPage() {
     try {
       const res = await fetch(`${API}/api/improve`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
         body: JSON.stringify({
           content: text,
           action_plan: actionPlan,
@@ -329,7 +329,7 @@ export default function ResearchPage() {
         try {
           const vRes = await fetch(`${API}/api/verify/scored`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
             body: JSON.stringify({ content: improved, engines: ["hallucination", "fact", "claim", "consistency"], format, language }),
           });
           if (vRes.ok) {
@@ -499,7 +499,7 @@ export default function ResearchPage() {
                       setResults(null);
                       try {
                         const res = await fetch(`${API}/api/verify/scored`, {
-                          method: "POST", headers: { "Content-Type": "application/json" },
+                          method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${authToken}` },
                           body: JSON.stringify({ content: paperContent, engines: ["hallucination", "fact", "claim", "consistency"], format, language }),
                         });
                         if (!res.ok) throw new Error(`API error: ${res.status}`);
