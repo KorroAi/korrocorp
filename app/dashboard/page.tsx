@@ -70,9 +70,12 @@ export default function DashboardPage() {
     <main className="min-h-screen bg-[#FAFAFA] text-[#2D3436]">
       <div className="max-w-4xl mx-auto px-6 pt-24 pb-16">
         <div className="flex items-center justify-between mb-8">
-          <div>
-            <p className="font-mono text-sm tracking-widest text-[#FF6B35] uppercase mb-2">Dashboard</p>
-            <h1 className="font-display text-3xl font-bold">{user?.name || user?.email}</h1>
+          <div className="flex items-center gap-4">
+            <a href="/research" className="font-display font-semibold text-sm bg-[#FF6B35] text-white px-5 py-2 rounded-xl hover:bg-[#E85D2C] transition">← Research</a>
+            <div>
+              <p className="font-mono text-sm tracking-widest text-[#FF6B35] uppercase mb-2">Dashboard</p>
+              <h1 className="font-display text-3xl font-bold">{user?.name || user?.email}</h1>
+            </div>
           </div>
           <button onClick={handleLogout} className="px-4 py-2 font-display text-sm border border-[#E8E8E8] rounded-xl hover:bg-[#FAFAFA]">Sign out</button>
         </div>
@@ -187,9 +190,6 @@ export default function DashboardPage() {
             </div>
           </div>
         )}
-        <div className="mt-8 text-center">
-          <a href="/research" className="font-display font-semibold text-sm bg-[#FF6B35] text-white px-8 py-3 rounded-xl hover:bg-[#E85D2C] transition inline-block">Go to Research →</a>
-        </div>
       </div>
     </main>
   );
